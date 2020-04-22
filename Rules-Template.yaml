@@ -1,0 +1,40 @@
+Version must be major.minor.patch:
+  description: should be valid semver
+  oas: all
+  severity: Critical
+  enabled: true
+  rule:
+    path: $.info.version
+    type: pattern
+    options:
+      match: ^(?<Major>0|[1-9][0-9]*)\.(?<Minor>0|[1-9][0-9]*)\.(?<Patch>0|[1-9][0-9]*)(?<Tags>(?:\-(?<Prerelease>(?:(?=[0]{1}[0-9A-Za-z-]{0})(?:[0]{1})|(?=[1-9]{1}[0-9]*[A-Za-z]{0})(?:[0-9]+)|(?=[0-9]*[A-Za-z-]+[0-9A-Za-z-]*)(?:[0-9A-Za-z-]+)){1}(?:\.(?=[0]{1}[0-9A-Za-z-]{0})(?:[0]{1})|\.(?=[1-9]{1}[0-9]*[A-Za-z]{0})(?:[0-9]+)|\.(?=[0-9]*[A-Za-z-]+[0-9A-Za-z-]*)(?:[0-9A-Za-z-]+))*){1}){0,1}(?:\+(?<Meta>(?:[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))){0,1})$
+Identifier MUST be :
+  description: Every identifier MUST be in American English and written in lowercase. An identifier SHOULD NOT cont
+  oas: all
+  severity: Critical
+  enabled: true
+  rule:
+    path: $.paths.*~
+    type: pattern
+    options:
+      match: ([a-z]+[A-Z]\w+)
+URI MUST 2:
+  description: a URI MUST NOT end with a trailing slash (/).
+  oas: all
+  severity: Critical
+  enabled: true
+  rule:
+    path: $..*[?(/^(http)(s?)(\:\/\/)/.test(@))]
+    type: pattern
+    options:
+      match: "[^\\/]$"
+Must be Open API 3:
+  description: Must be Open API 3
+  oas: all
+  severity: Critical
+  enabled: true
+  rule:
+    path: $.openapi
+    type: path
+    options:
+      shouldExist: true
