@@ -3,10 +3,17 @@
 
  Add rules to this repository that can be used in SwaggerHub's API standardiztion
 
- Format:
- File name: description of rule, what it does
- Path: YAML path in openAPI definition file
- Specification version: OAS 2 or 3 or both
- Matching pattern: Regular expression that path of file must match.
+ YAML Format:
+
+ Rule Name:
+  description: User Friendly description, this will be the error message the user sees in the editor
+  oas: [all|OAS2|OAS3] 
+  severity: [Critical|Warning]
+  enabled: [true|false]
+  rule:
+    path: $.path.in.yaml
+    type: [pattern|match]
+    options:
+      match: matching regular expression
 
  
